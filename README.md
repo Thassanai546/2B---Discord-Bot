@@ -6,7 +6,7 @@ This bot currently performs some simple actions like interacting with users and 
 Link to the game on <a href="https://store.steampowered.com/agecheck/app/524220/">Steam</a>
 
 <br><br><br>
-## Commands
+# Commands
 
 <dl>
   <dt><code>!help</code></dt>
@@ -25,6 +25,10 @@ Link to the game on <a href="https://store.steampowered.com/agecheck/app/524220/
   <dd>- Only when necessary</dd>
 </dl>
 
-<br>
 2B will also respond to certain greetings, for example "Hey 2b" or "yo 2b". 
-If you mention their name in some other way they will say a random quote from the game.
+If you mention 2b she will say a quote from the game.
+
+# Preview
+<br>
+<img src="https://user-images.githubusercontent.com/72495327/124033440-d93e0c00-d9f1-11eb-80f2-fe43c9c03dfb.PNG">
+<img src="https://user-images.githubusercontent.com/72495327/124033529-f541ad80-d9f1-11eb-988d-4a91e10c7374.PNG">
