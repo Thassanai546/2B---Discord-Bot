@@ -1,13 +1,20 @@
+from replit import db
 import requests
-import random
 import discord
+import random
+import time
 import json
 import os
 
 client = discord.Client()
 
+# Status if 2B will respond to their name or not
+if "active" not in db.keys():
+  db["responding"] = True
+  print("Responding set to True")
+
 # Quotes that 2B says
-twoBQuotes = [
+two_b_quotes = [
   "The machines don't have feelings. You said it yourself.",
   "Everything that lives is designed to end. We are perpetually trapped in a never-ending spiral of life and death. Is this a curse? Or some kind of punishment? I often think about the god who blessed us with this cryptic puzzle...and wonder if we'll ever get the chance to kill him.",
   "Stop complaining.",
@@ -22,7 +29,20 @@ twoBQuotes = [
 ]
 
 # Greetings that 2B will respond to and reply with
-greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b"]
+greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b","evening 2b"]
+
+system_check = ("""
+```Initializing Tactics Log
+Memory Unit: Green
+Vitals: Green
+Black Box Temperature: Normal
+Black Box Pressure: Normal
+Equipment Status: Green
+All Systems Green
+Combat Preparation Complete```
+""")
+
+protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
 
 def get_anime_quote():
   response = requests.get("https://animechan.vercel.app/api/random")
@@ -52,7 +72,7 @@ async def on_message(message):
 
   # Commands
   if msg.startswith("!help"):
-    await message.channel.send("```!about, !anime, !inspire, !gif, !yorha```")
+    await message.channel.send("```!about, !anime, !inspire, !gif, !yorha, !systemcheck, !selfdestruct, !enabled true/false```")
 
   if msg.startswith("!about"):
     await message.channel.send("""
@@ -76,14 +96,34 @@ async def on_message(message):
   if msg.startswith("!selfdestruct"):
     await message.channel.send(f"I would rather not do that right now {message.author.name}")
 
-  if "2b" in msg.lower() and msg.lower() not in greetings:
-    await message.channel.send(random.choice(twoBQuotes))
+  if msg.startswith("!systemcheck"):
+    await message.channel.send("`Commencing System Check...`")
+    time.sleep(1)
 
-  if msg.lower() in greetings:
-    # 2b will reply with a random greeting with "2b" stripped from string
-    reply = random.choice(greetings)
-    reply = reply.split(' ',1)[0]
-    await message.channel.send(f"{reply} {message.author.name}")
+    for check in protocols:
+      await message.channel.send(check)
+      time.sleep(.6)
+
+    await message.channel.send(system_check)
+
+  if msg.startswith("!enabled"): # Toggle bots ability to detect its name in messages
+    value = msg.split("!enabled ",1)[1]
+    if value.lower() == "true":
+      db["responding"] = True
+      await message.channel.send("YoRHa No.2 Type B now responding")
+    else:
+      db["responding"] = False
+      await message.channel.send("YoRHa No.2 Type B responding now off")
+
+  if db["responding"]: # By default 2b will respond to Discord chat
+    if "2b" in msg.lower() and msg.lower() not in greetings:
+      await message.channel.send(random.choice(two_b_quotes))
+
+    if msg.lower() in greetings: # Check for any messages found in "greetings" list
+      # 2b will reply with a random greeting with "2b" stripped from string
+      reply = random.choice(greetings)
+      reply = reply.split(' ',1)[0]
+      await message.channel.send(f"{reply} {message.author.name}")
 
 # start
 client.run(os.environ['Tkn'])
