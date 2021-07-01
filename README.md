@@ -32,3 +32,5 @@ If you mention 2b she will say a quote from the game.
 <br>
 <img src="https://user-images.githubusercontent.com/72495327/124033440-d93e0c00-d9f1-11eb-80f2-fe43c9c03dfb.PNG">
 <img src="https://user-images.githubusercontent.com/72495327/124033529-f541ad80-d9f1-11eb-988d-4a91e10c7374.PNG">
+<img src="https://user-images.githubusercontent.com/72495327/124144644-0e933a00-da84-11eb-9f2d-8346ccf9fa7d.PNG">
+
