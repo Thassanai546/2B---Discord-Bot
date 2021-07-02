@@ -1,4 +1,5 @@
 from replit import db
+import weapons
 import requests
 import discord
 import random
@@ -9,11 +10,11 @@ import os
 client = discord.Client()
 
 # Status if 2B will respond to their name or not
-if "active" not in db.keys():
+if "responding" not in weapons.list_all():
   db["responding"] = True
   print("Responding set to True")
 
-# Quotes that 2B says
+# Quotes that 2B can say
 two_b_quotes = [
   "The machines don't have feelings. You said it yourself.",
   "Everything that lives is designed to end. We are perpetually trapped in a never-ending spiral of life and death. Is this a curse? Or some kind of punishment? I often think about the god who blessed us with this cryptic puzzle...and wonder if we'll ever get the chance to kill him.",
@@ -29,7 +30,10 @@ two_b_quotes = [
 ]
 
 # Greetings that 2B will respond to and reply with
-greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b","evening 2b"]
+greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b","evening 2b","morning 2b"]
+
+# Used as output for systemcheck
+protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
 
 system_check = ("""
 ```Initializing Tactics Log
@@ -41,8 +45,6 @@ Equipment Status: Green
 All Systems Green
 Combat Preparation Complete```
 """)
-
-protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
 
 def get_anime_quote():
   response = requests.get("https://animechan.vercel.app/api/random")
@@ -72,7 +74,7 @@ async def on_message(message):
 
   # Commands
   if msg.startswith("!help"):
-    await message.channel.send("```!about, !anime, !inspire, !gif, !yorha, !systemcheck, !selfdestruct, !enabled true/false```")
+    await message.channel.send("```!about, !anime, !inspire, !gif, !yorha, !systemcheck, !selfdestruct, !enabled true/false !weapon, !list, !add, !del```")
 
   if msg.startswith("!about"):
     await message.channel.send("""
@@ -109,13 +111,58 @@ async def on_message(message):
   if msg.startswith("!enabled"): # Toggle bots ability to detect its name in messages
     value = msg.split("!enabled ",1)[1]
     if value.lower() == "true":
-      db["responding"] = True
+      #db["responding"] = True
+      weapons.set_responding(True)
       await message.channel.send("YoRHa No.2 Type B now responding")
     else:
-      db["responding"] = False
+      #db["responding"] = False
+      weapons.set_responding(False)
       await message.channel.send("YoRHa No.2 Type B responding now off")
 
-  if db["responding"]: # By default 2b will respond to Discord chat
+  # Weapon queries
+  if msg.startswith("!add"):
+    if weapons.parse(msg):
+      await message.channel.send("I added that to my database")
+    else:
+      await message.channel.send("I could not add that")
+
+  if msg.startswith("!del"):
+    msg = msg.strip("!del ")
+    if weapons.delete_weapon(msg):
+      await message.channel.send("I have erased that entry from my database.")
+    else:
+      await message.channel.send("I could not erase that entry.")
+
+  if msg.startswith("!list"):
+    result = ""
+    weaponList = weapons.list_weapons()
+    for item in weaponList:
+      result = result + item + "\n"
+    await message.channel.send("Here are the weapons that are currently in my database: \n" + result)
+
+  if msg.startswith("!listall"): # TESTING
+    await message.channel.send(weapons.list_all())
+
+  if msg.startswith("!weapon"):
+    msg = msg.strip("!weapon ")
+
+    if msg == "": # if user enters just "!weapon"
+      await message.channel.send("Please specify which weapon you would like to learn about.\n !list can be used to view all weapons.")
+      return
+
+    description = weapons.get_weapon(msg)
+    if description:
+      await message.channel.send(f"**{msg}**: {description}")
+    else:
+      matches = weapons.search_weapons(msg)
+      if matches:
+        for key in matches:
+          await message.channel.send(f"**{key}**: {matches[key]}")
+      else:
+        await message.channel.send("Sorry, I could not fine that weapon in my database..")
+
+  # 2B will respond if their name is detected
+  if db["responding"]:
     if "2b" in msg.lower() and msg.lower() not in greetings:
       await message.channel.send(random.choice(two_b_quotes))
 
