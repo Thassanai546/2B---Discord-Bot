@@ -26,11 +26,13 @@ two_b_quotes = [
   "You know nothing about humanity!",
   "All this help for no personal gain? I know she's pretty, but-",
   "Well, aren't we generous?",
-  "Stop complaining."
+  "Stop complaining.",
+  "A future is not given to you.  It is something you must take for yourself. -Pod 042",
+  "There's an important lesson here: The more of a fool people take you for, the more you'll learn of their true nature. -A Machine"
 ]
 
 # Greetings that 2B will respond to and reply with
-greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b","evening 2b","morning 2b"]
+greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 2b","evening 2b","morning 2b","howdy 2b"]
 
 # Used as output for systemcheck
 protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
@@ -92,7 +94,7 @@ async def on_message(message):
     await message.channel.send(get_quote())
   
   if msg.startswith("!gif"):
-    file = random.choice(os.listdir("gifs/collection"))
+    file = random.choice(os.listdir("gifs/collection/"))
     await message.channel.send(file=discord.File('gifs/collection/' + file))
 
   if msg.startswith("!selfdestruct"):
@@ -118,6 +120,16 @@ async def on_message(message):
       #db["responding"] = False
       weapons.set_responding(False)
       await message.channel.send("YoRHa No.2 Type B responding now off")
+
+  if msg.startswith("!a2"):
+    file = random.choice(os.listdir("gifs/characters/"))
+    await message.channel.send(file=discord.File('gifs/characters/' + file))
+    await message.channel.send("""
+    *```The A-model is a YoRHa prototype that specializes in close-quarter combat. Though not presently in use, it was originally created to speed along the implementation of other official models such as 2B and 9S. This particular unit, whose official title is Class A, Number 2, was wanted by Command for desertion and ordered to be destroyed on sight. She first appeared in the Forest Castle, where she slew the Forest King. 2B and 9S engaged her in combat, but she managed to escape.```*
+    """)
+
+  if msg.startswith("!github"):
+    await message.channel.send("Thass's page on github: https://github.com/Thassanai546")
 
   # Weapon queries
   if msg.startswith("!add"):
@@ -147,7 +159,7 @@ async def on_message(message):
     msg = msg.strip("!weapon ")
 
     if msg == "": # if user enters just "!weapon"
-      await message.channel.send("Please specify which weapon you would like to learn about.\n !list can be used to view all weapons.")
+      await message.channel.send("Please specify which weapon you would like to learn about. '!list' can be used to view all weapons.")
       return
 
     description = weapons.get_weapon(msg)
