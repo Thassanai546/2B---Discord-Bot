@@ -37,6 +37,9 @@ greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 
 # Used as output for systemcheck
 protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
 
+help_menu = ["!about","!anime","!inspire","!gif","!yorha","!systemcheck","!selfdestruct","!enabled true/false","!weapon","!list",
+"!add","!del"]
+
 system_check = ("""
 ```Initializing Tactics Log
 Memory Unit: Green
@@ -76,7 +79,11 @@ async def on_message(message):
 
   # Commands
   if msg.startswith("!help"):
-    await message.channel.send("```!about, !anime, !inspire, !gif, !yorha, !systemcheck, !selfdestruct, !enabled true/false !weapon, !list, !add, !del```")
+    result = ""
+    help_menu.sort()
+    for option in help_menu:
+      result = result + option + "\n"
+    await message.channel.send("```" + result + "```")
 
   if msg.startswith("!about"):
     await message.channel.send("""
