@@ -32,7 +32,7 @@ Note: CONTENT CONTAINS SPOILERS FOR NieR:Automata!!!
 If you mention 2b she will say a quote from the game.
 
 # Also see: Unit A2 written in JavaScript
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Thassanai546&repo=A2-Discord-Bot)](https://github.com/Thassanai546/A2-Discord-Bot)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Thassanai546&repo=A2-Discord-Bot&theme=omni)](https://github.com/Thassanai546/A2-Discord-Bot)
 
 <img src="https://user-images.githubusercontent.com/72495327/125175551-e4005a00-e1c4-11eb-85f3-e4a7e225f743.gif" width=400>
 
