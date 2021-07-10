@@ -1,5 +1,6 @@
 # 2B-Discord-Bot :hibiscus:
-<img src="https://github.com/Thassanai546/2B-Discord-Bot/blob/master/gifs/collection/845.gif" align=right>
+<img src="https://user-images.githubusercontent.com/72495327/125176559-398c3500-e1cc-11eb-8be7-0ecc8b532506.gif" align=right width=350>
+
 This is a simple Discord bot that is themed around the character "2B" from Nier Automata, a game released in 2017. 
 This bot currently performs some simple actions like interacting with users and sending gifs to a Discord channel. This is my first ever Discord bot.
 <br><br>
