@@ -91,6 +91,7 @@ async def on_message(message):
     about_embed.add_field(name="Occupation", value="YoRHa", inline=True)
     about_embed.add_field(name="Height", value="168cm (5'6) (including heels)", inline=True)
     about_embed.add_field(name="Weight", value="148.8kg", inline=True)
+    about_embed.set_image(url="https://github.com/Thassanai546/2B-Discord-Bot/blob/master/images/2b/about2b.png?raw=true")
     await message.channel.send(embed=about_embed)
 
   if msg.startswith("!yorha"):
