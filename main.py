@@ -37,8 +37,9 @@ greetings = ["hey 2b","hi 2b","yo 2b","hello 2b","greetings 2b","hiya 2b","yooo 
 # Used as output for systemcheck
 protocols = ["Activating IFF","Activating FCS","Initializing Pod Connection","Activating Inertia Control System"]
 
-help_menu = ["!about","!anime","!inspire","!gif","!yorha","!systemcheck","!selfdestruct","!enabled true/false","!weapon","!list",
-"!add","!del"]
+help_menu = ["!about","!anime","!inspire","!gif","!yorha",
+"!systemcheck","!selfdestruct","!enabled true/false","!weapon","!list",
+"!add","!del","!a2"]
 
 system_check = ("""
 ```Initializing Tactics Log
@@ -83,12 +84,14 @@ async def on_message(message):
     help_menu.sort()
     for option in help_menu:
       result = result + option + "\n"
-    await message.channel.send("```" + result + "```")
+    await message.author.send(">>> " + result) # Sent to direct messages
 
   if msg.startswith("!about"):
-    await message.channel.send("""
-    *YoRHa No.2 Type B (Battle) or 2B serves as the protagonist of Route A in NieR:Automata. She is a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. She served during the 14th Machine War.*
-    """)
+    about_embed = discord.Embed(title="YoRHa No. 2 Type B", description="```2B is an all-purpose battle android, deployed as a member of the automated YoRHa infantry. She is equipped with a multitude of weapons for close quarters combat and can attack from range using the Pod support system. Her eyes are obscured beneath her standard-issue military visor, which she rarely removes.```")
+    about_embed.add_field(name="Occupation", value="YoRHa", inline=True)
+    about_embed.add_field(name="Height", value="168cm (5'6) (including heels)", inline=True)
+    about_embed.add_field(name="Weight", value="148.8kg", inline=True)
+    await message.channel.send(embed=about_embed)
 
   if msg.startswith("!yorha"):
     await message.channel.send(file=discord.File('gifs/about/YoRHa.gif'))
@@ -141,9 +144,9 @@ async def on_message(message):
   # Weapon queries
   if msg.startswith("!add"):
     if weapons.parse(msg):
-      await message.channel.send("I added that to my database")
+      await message.channel.send("I added that to my database.")
     else:
-      await message.channel.send("I could not add that")
+      await message.channel.send("I could not add that.")
 
   if msg.startswith("!del"):
     msg = msg.strip("!del ")
