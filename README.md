@@ -11,25 +11,24 @@ Note: CONTENT CONTAINS SPOILERS FOR NieR:Automata!!!
 <br><br><br>
 # Commands
 
-<dl>
-  <dt><code>!help</code></dt>
-  <dd>- Display list of commands</dd>
-  <dt><code>!about</code></dt>
-  <dd>- Information about unit 2B</dd>
-  <dt><code>!yorha</code></dt>
-  <dd>- Information about project Yorha</dd>
-  <dt><code>!anime</code></dt>
-  <dd>- Generate a random quote from an anime</dd>
-  <dt><code>!inspire</code></dt>
-  <dd>- Generate a random inspiring quote</dd>
-  <dt><code>!gif</code></dt>
-  <dd>- Generate a random gif</dd>
-  <dt><code>!selfdestruct</code></dt>
-  <dd>- Only when necessary</dd>
-</dl>
+A user can receive a full list of commands as a direct message from the bot by writing `!help`.\
+2B will also respond to certain greetings, for example "Hey 2b" or "yo 2b". If you mention 2b she will say a quote from the game.
 
-2B will also respond to certain greetings, for example "Hey 2b" or "yo 2b". 
-If you mention 2b she will say a quote from the game.
+<ul>
+<li>!a2</li>
+<li>!about</li>
+<li>!add</li>
+<li>!anime</li>
+<li>!del</li>
+<li>!enabled true/false</li>
+<li>!gif</li>
+<li>!inspire</li>
+<li>!list</li>
+<li>!selfdestruct</li>
+<li>!systemcheck</li>
+<li>!weapon</li>
+<li>!yorha</li>
+</ul>
 
 # Also see: Unit A2 written in JavaScript
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Thassanai546&repo=A2-Discord-Bot&theme=omni)](https://github.com/Thassanai546/A2-Discord-Bot)
