@@ -2,11 +2,12 @@
 <img src="https://user-images.githubusercontent.com/72495327/125176559-398c3500-e1cc-11eb-8be7-0ecc8b532506.gif" align=right width=350>
 
 This is a simple Discord bot that is themed around the character "2B" from Nier Automata, a game released in 2017. 
-This bot currently performs some simple actions like interacting with users and sending gifs to a Discord channel. This is my first ever Discord bot. 👾
-<br><br>
-Link to the game on <a href="https://store.steampowered.com/agecheck/app/524220/">Steam</a>
+This bot currently performs some simple actions like interacting with users and sending gifs to a Discord channel. This is my first ever Discord bot👾
 <br><br>
 Note: CONTENT CONTAINS SPOILERS FOR NieR:Automata!!!
+<br><br>
++ Link to the game on <a href="https://store.steampowered.com/agecheck/app/524220/">Steam</a>
++ See below: the follow up to this bot, Unit A2.
 
 <br><br><br>
 # Commands :milky_way:
