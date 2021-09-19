@@ -41,7 +41,16 @@ A user can receive a full list of commands as a direct message from the bot by w
 <img src="https://user-images.githubusercontent.com/72495327/125179395-5170b280-e1e6-11eb-9193-3d8a9fade02f.PNG">
 <img src="https://user-images.githubusercontent.com/72495327/124033440-d93e0c00-d9f1-11eb-80f2-fe43c9c03dfb.PNG">
 <img src="https://user-images.githubusercontent.com/72495327/124337822-7472e500-db9c-11eb-99da-f85d2231b9db.PNG">
+
+> Here I add a weapon to 2B's database. Now people can query this weapon at any time! They do not need to remember the full name of the weapon as seen when I just type "Ancient"
+<br>
+<br>
+
 <img src="https://user-images.githubusercontent.com/72495327/124033529-f541ad80-d9f1-11eb-988d-4a91e10c7374.PNG">
+<img src="https://user-images.githubusercontent.com/72495327/133943634-eff05c8c-da3d-4ced-b9cc-32bf6a595b10.png">
+
+> Here is a systemcheck. It is a reference to the one we see in the loading screen in-game.
+
 
 
 
